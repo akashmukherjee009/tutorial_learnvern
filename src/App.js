@@ -24,10 +24,14 @@ function App() {
     }
 
   ]
+  const  addSubscriptionHandler=(data)=>{
+    subscriptions.push(data)
+    console.log('on add subscription',data);
+  }
   
   return (
     <div className="App">
-      <NewSubscription />
+      <NewSubscription  onAddSubscription={addSubscriptionHandler}/>
       <Subcription date={subscriptions[0].date} title={subscriptions[0].title} price={subscriptions[0].price}/>
       <Subcription date={subscriptions[1].date} title={subscriptions[1].title} price={subscriptions[1].price}/>
       <Subcription date={subscriptions[2].date} title={subscriptions[2].title} price={subscriptions[2].price}/>

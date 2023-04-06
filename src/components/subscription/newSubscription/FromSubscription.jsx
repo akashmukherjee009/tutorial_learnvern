@@ -1,19 +1,20 @@
 import { useState } from "react";
 import "./newSubscription.css"
+ 
 
 
-const FromSubscription = () => {
+const FromSubscription = (props) => {
     // const [userTitle,setuserTitle]= useState("")
     // const [userDate,setuserDate]= useState("")
     // const [userAmount,setuserAmount]= useState("")
-    const [form, setForm]= useState({userTitle:'Enter title', userDate:'', userAmount:'1234'})
+    const [form, setForm]= useState({userTitle:'', userDate:'', userAmount:''})
     const titleChangeHandler= (events)=>{
         // setuserTitle(events.target.value)
         // setForm({...form, userTitle: events.target.value})
         setForm((prevState)=>{
             return {...prevState, userTitle: events.target.value}
         })
-        console.log(form);
+        // console.log(form);
     }
     const dateChangeHandler= (events)=>{
         // setuserDate(events.target.value)
@@ -21,7 +22,7 @@ const FromSubscription = () => {
         setForm((prevState)=>{
             return {...prevState, userDate: events.target.value}
         })
-        console.log(form);
+        // console.log(form);
     }
     const amountChangeHandler= (events)=>{
         // setuserAmount(events.target.value)
@@ -29,12 +30,15 @@ const FromSubscription = () => {
         setForm((prevState)=>{
             return {...prevState, userAmount: events.target.value}
         })
-        console.log(form);
+        // console.log(form);
     }
     const submitHandler=(events)=>{
         events.preventDefault()
+
         const subscription= {title: form.userTitle, amount: form.userAmount, date: Date(form.userDate)}
-        console.log(subscription);
+        props.onSave(subscription)
+
+        console.log('on save',subscription);
     }
 
   return (

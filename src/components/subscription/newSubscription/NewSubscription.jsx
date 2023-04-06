@@ -1,10 +1,15 @@
 import React from 'react'
 import FromSubscription from './FromSubscription'
 
-const NewSubscription = () => {
+const NewSubscription = (props) => {
+  const onSaveHandler= (data)=>{
+    const subscriptionData= {...data, id: Math.random().toString()}
+    props.onAddSubscription(subscriptionData)
+    console.log('on submit', subscriptionData);
+  }
   return (
     <div>
-      <FromSubscription />
+      <FromSubscription onSave={onSaveHandler}/>
     </div>
   )
 }
