@@ -30,13 +30,14 @@ const FromSubscription = (props) => {
         setForm((prevState)=>{
             return {...prevState, userAmount: events.target.value}
         })
-        // console.log(form);
+        console.log(form);
     }
     const submitHandler=(events)=>{
         events.preventDefault()
 
-        const subscription= {title: form.userTitle, amount: form.userAmount, date: Date(form.userDate)}
+        const subscription= {title: form.userTitle, price: form.userAmount, date: new Date(form.userDate)}
         props.onSave(subscription)
+        
 
         console.log('on save',subscription);
     }
