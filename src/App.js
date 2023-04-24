@@ -27,22 +27,26 @@ const INITIAL_SUB= [
 function App() {
   const [subscriptions, setSubsriptions]= useState(INITIAL_SUB)
   const  addSubscriptionHandler=(data)=>{
-    subscriptions.push(data)
+    // subscriptions.push(data)
     console.log('on add subscription',data);
-    setSubsriptions(prevState=>{return[data,...subscriptions]})
+    setSubsriptions(prevState=>{return[...prevState,data]})
     console.log(subscriptions);
   }
-  const [filteredData, setFilteredData]= useState(2021);
+  const [filteredData, setFilteredData]= useState('2021');
   const filterChangeHandler= (data)=>{
     setFilteredData(data)
     console.log('Onsave Data:', data);
   }
+  const filterSubscriptions= subscriptions.filter((item)=>{
+    return item.date.getFullYear().toString()=== filteredData
+
+  })
   
   return (
     <div className="App">
       <NewSubscription  onAddSubscription={addSubscriptionHandler}/>
       <Filter onFilterChange={filterChangeHandler} selectedFilter={filteredData}/>
-      {subscriptions.map(subcription => <Subcription date={subcription.date} title={subcription.title} price={subcription.price}/>)}
+      {filterSubscriptions.length===0?"Data not Found": filterSubscriptions.map(subcription => <Subcription date={subcription.date} title={subcription.title} price={subcription.price}/>)}
       {/* <Subcription date={subscriptions[0].date} title={subscriptions[0].title} price={subscriptions[0].price}/>
       <Subcription date={subscriptions[1].date} title={subscriptions[1].title} price={subscriptions[1].price}/>
       <Subcription date={subscriptions[2].date} title={subscriptions[2].title} price={subscriptions[2].price}/> */}
