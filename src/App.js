@@ -2,7 +2,9 @@
 import { useState } from 'react';
 import Filter from './components/subscription/Filter';
 import NewSubscription from './components/subscription/newSubscription/NewSubscription';
-import Subcription from './components/subscription/Subscription';
+
+import SubscriptionList from './components/subscription/SubscriptionList';
+
 const INITIAL_SUB= [
   {
     id: "1",
@@ -46,7 +48,7 @@ function App() {
     <div className="App">
       <NewSubscription  onAddSubscription={addSubscriptionHandler}/>
       <Filter onFilterChange={filterChangeHandler} selectedFilter={filteredData}/>
-      {filterSubscriptions.length===0?"Data not Found": filterSubscriptions.map(subcription => <Subcription date={subcription.date} title={subcription.title} price={subcription.price}/>)}
+      <SubscriptionList subscriptions={filterSubscriptions}/>
       {/* <Subcription date={subscriptions[0].date} title={subscriptions[0].title} price={subscriptions[0].price}/>
       <Subcription date={subscriptions[1].date} title={subscriptions[1].title} price={subscriptions[1].price}/>
       <Subcription date={subscriptions[2].date} title={subscriptions[2].title} price={subscriptions[2].price}/> */}
