@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import Filter from './components/subscription/Filter';
 import NewSubscription from './components/subscription/newSubscription/NewSubscription';
-
 import SubscriptionList from './components/subscription/SubscriptionList';
 
 const INITIAL_SUB= [
