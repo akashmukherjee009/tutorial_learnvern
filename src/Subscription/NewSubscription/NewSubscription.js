@@ -11,7 +11,7 @@ const NewSubscription =(props) =>{
     }
     const showFormHandler=()=>{
         setShowForm(true)
-        console.log('show form', showForm)
+        // console.log('show form', showForm)
     }
     const hideFormHandler=()=>{
         setShowForm(false);

@@ -2,7 +2,7 @@ import './SubscriptionList.css';
 import Subscription from './Subscription';
 
 const SubscriptionList=(props)=>{
-  console.log(props);
+  // console.log(props);
  if(props.subscriptions.length == 0){return <h3 className="list_no_data"> No data found</h3>}
  return(
     <ul className="list"> 
